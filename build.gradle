@@ -1,0 +1,29 @@
+plugins {
+    id 'java'
+    id 'io.qase.qase-gradle-plugin' version '2.2.0'
+}
+
+ext {
+    junitVersion = '5.7.2'
+    cucumberVersion = '6.10.4'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation "org.junit.jupiter:junit-jupiter-api:${junitVersion}"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${junitVersion}"
+    testImplementation "io.cucumber:cucumber-java:${cucumberVersion}"
+    testImplementation "io.cucumber:cucumber-junit:${cucumberVersion}"
+    testImplementation "org.junit.vintage:junit-vintage-engine:${junitVersion}"
+}
+
+test {
+    useJUnitPlatform()
+    testLogging.showStandardStreams = true
+}
